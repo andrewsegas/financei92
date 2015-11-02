@@ -254,7 +254,7 @@ public class CrudDatabase {
 	// o Parametro tipoGer = 1 retorna o usuario, = 0 retorna o ID
 	public String ultimoUsuarioLogado(Boolean ValidarUsuarioLogado, int tipoGet){
 		Login Usu = new Login();
-		String[] colunas = new String[]{"_USUid", "USULogin"};
+		String[] colunas = new String[]{"_USUid", "USULogin", "UsuNome"};
 		Cursor cursor = null;
 		
 		if(ValidarUsuarioLogado)
@@ -271,6 +271,7 @@ public class CrudDatabase {
 			cursor.moveToFirst();
 			Usu.setId(cursor.getLong(0));
 			Usu.setLogin(cursor.getString(1));
+			Usu.setNome(cursor.getString(2));
 		}
 		
 
@@ -279,7 +280,7 @@ public class CrudDatabase {
 			return String.valueOf(Usu.getId());
 		}else{
 			cursor.close();
-			return Usu.getLogin();
+			return Usu.getNome();
 		}
 
 	}
@@ -311,7 +312,7 @@ public class CrudDatabase {
 		bd.delete("MOVIMENTOS", null, null);
 	}
 	
-	public void RegistrarMovimentos(TipoBanco SMSRecebido)
+	public void RegistrarMovimentos(TipoBanco SMSRecebido, Boolean lTCM)
 	{
 		ContentValues valores = new ContentValues();
 		int nUsuId;
@@ -351,6 +352,9 @@ public class CrudDatabase {
 			valores.put("MOV_USULOGIN", sUsuName);
 		
 		bd.insert("MOVIMENTOS", null, valores);
+		
+		if (lTCM == false)
+			AjustaSaldoPorMovimento(SMSRecebido.getcMoney().replace(".", ""),SMSRecebido.getRecDesp());
 	}
 	
 	/*------------------------------
@@ -563,10 +567,18 @@ public class CrudDatabase {
 	}
 	
 	
-	public void ApagarMovimento(Long idMov)
+	public void ApagarMovimento(Long idMov, String sValor, String sRecDesp)
 	{		
 		bd.delete("MOVIMENTOS", "_IDMov = '"+ idMov + "'", null);
 		//atualiza saldo
+		
+		if (sRecDesp.contains("1")){// deve trocar o valor do recdesp pois na exclusão o ajuste do saldo é inverso
+			sRecDesp = "2";
+		}else{
+			sRecDesp = "1";
+		}
+		
+		AjustaSaldoPorMovimento(sValor,sRecDesp);
 	}
 	
 	@SuppressLint("SimpleDateFormat")
@@ -593,6 +605,7 @@ public class CrudDatabase {
 	    return dfmt.format(data);
 	}
 	
+	//insere o saldo inicial quando o usuario entra a primeira vez no app
 	public void SetSaldoInicial(String nfSaldo)
 	{
 		ContentValues valores = new ContentValues();
@@ -604,6 +617,7 @@ public class CrudDatabase {
 		bd.insert("SALDO", null, valores);
 	}	
 	
+	// corige o saldo manual, ao clicar no SALDO da tela geral
 	public void CorrigeSaldo(String nfSaldo)
 	{
 		ContentValues valores = new ContentValues();
@@ -614,6 +628,7 @@ public class CrudDatabase {
 		bd.update("SALDO", valores, "SLD_USUID = '"+ TheFirstPage.UsuID + "'", null);
 	}	
 	
+	//verifica se ja existe saldo inicial
 	public boolean ExistSaldoInicial()
 	{
 		String[] colunas = new String[]{ "SLD_SALDO"};
@@ -629,6 +644,7 @@ public class CrudDatabase {
 		return false;
 	}
 	
+	//Busca o saldo atual para aparecer na tela
 	public String SaldoAtual()
 	{
 		String[] colunas = new String[]{ "SLD_SALDO"};
@@ -644,6 +660,39 @@ public class CrudDatabase {
 		sReturn = cursor.getString(0);
 		cursor.close();
 		return sReturn;
+	}
+	
+	//Atualiza o saldo inical sempre que chamar a tabela "MOVIMENTOS"
+	public void AjustaSaldoPorMovimento(String sValor, String sRecDesp){
+		ContentValues valores = new ContentValues();
+		String sSaldoAntigo, sSaldoNovo;
+		String[] colunas = new String[]{ "SLD_SALDO"};
+		Cursor cursor = bd.query("SALDO", colunas , "SLD_USUID = '" + TheFirstPage.UsuID + "'" , null, null, null, null);
+		
+		if(cursor.getCount() > 0){
+			cursor.moveToFirst();
+			sSaldoAntigo = cursor.getString(0);
+			if (sRecDesp == "1"){ //receita, deve somar o saldo
+				sSaldoNovo = String.valueOf((Float.parseFloat(sSaldoAntigo.replace(",", "."))
+						+ Float.parseFloat(sValor.replace(",", "."))))
+						.replace(".", ",") ;
+			}else{ //se for "2" é despesa, deve subtrair o saldo
+				sSaldoNovo = String.format("%.2f",(Float.parseFloat(sSaldoAntigo.replace(",", "."))
+											- Float.parseFloat(sValor.replace(",", "."))))
+							.replace(".", ",") ;
+			}
+			
+			
+			valores.put("SLD_SALDO",  sSaldoNovo);
+			valores.put("SLD_DATA", this.getDateTime("dd/MM/yyyy") );
+			valores.put("SLD_IDMOV", "MOVIMENTO");
+			
+			bd.update("SALDO", valores, "SLD_USUID = '"+ TheFirstPage.UsuID + "'", null);
+			
+		}
+		
+		
+		
 	}
 	
 }

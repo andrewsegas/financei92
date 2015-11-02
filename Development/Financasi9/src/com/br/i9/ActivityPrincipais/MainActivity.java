@@ -71,12 +71,12 @@ public class MainActivity extends Activity implements OnClickListener, Connectio
        btSignInDefault = (SignInButton) findViewById(R.id.btSignInDefault);
         btSignInDefault.setOnClickListener(MainActivity.this);
         
-        googleApiClient = new GoogleApiClient.Builder(MainActivity.this)
+        /*googleApiClient = new GoogleApiClient.Builder(MainActivity.this)
         		.addConnectionCallbacks(MainActivity.this)
         		.addOnConnectionFailedListener(MainActivity.this)
         		.addApi(Plus.API)
         		.addScope(Plus.SCOPE_PLUS_LOGIN)
-        		.build();
+        		.build();*/
     }
 
     @Override

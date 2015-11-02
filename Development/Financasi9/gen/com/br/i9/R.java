@@ -2522,11 +2522,11 @@ containing a value of this type.
         public static final int usuario=0x7f0200bd;
     }
     public static final class id {
-        public static final int BotoesMenu=0x7f0a0098;
+        public static final int BotoesMenu=0x7f0a0099;
         public static final int Detalhes_item=0x7f0a0100;
         public static final int EmailNewUser=0x7f0a00e9;
         public static final int EsqueciMinhaSenha=0x7f0a0072;
-        public static final int InformacoesDespesas=0x7f0a0095;
+        public static final int InformacoesDespesas=0x7f0a0096;
         public static final int NomeNewUser=0x7f0a006f;
         public static final int RegisterNewUser=0x7f0a006e;
         public static final int ScrollView1=0x7f0a0081;
@@ -2612,7 +2612,7 @@ containing a value of this type.
         public static final int drawer_layout=0x7f0a00f4;
         public static final int drawer_list=0x7f0a00f9;
         public static final int dropdown=0x7f0a0020;
-        public static final int dropdownMeses=0x7f0a0093;
+        public static final int dropdownMeses=0x7f0a0094;
         public static final int edit_query=0x7f0a005f;
         public static final int emailtext=0x7f0a00ee;
         public static final int end=0x7f0a0022;
@@ -2621,10 +2621,10 @@ containing a value of this type.
         public static final int escolherCor=0x7f0a00dd;
         public static final int expand_activities_button=0x7f0a0044;
         public static final int expanded_menu=0x7f0a0054;
-        public static final int faq=0x7f0a009a;
+        public static final int faq=0x7f0a009b;
         public static final int fourDivider=0x7f0a00a9;
         public static final int fragmentContainer=0x7f0a00fa;
-        public static final int geral=0x7f0a00a2;
+        public static final int geral=0x7f0a00a3;
         public static final int google_wallet_classic=0x7f0a003a;
         public static final int google_wallet_grayscale=0x7f0a003b;
         public static final int google_wallet_monochrome=0x7f0a003c;
@@ -2641,7 +2641,7 @@ containing a value of this type.
         public static final int imageView1=0x7f0a006c;
         public static final int info=0x7f0a00d8;
         public static final int informaCoesReceitas=0x7f0a00e3;
-        public static final int itensMenu=0x7f0a0099;
+        public static final int itensMenu=0x7f0a009a;
         public static final int layoutAdapter=0x7f0a00b3;
         public static final int layoutAdapterTipo=0x7f0a00b6;
         public static final int layoutDtHora=0x7f0a00b9;
@@ -2668,13 +2668,13 @@ containing a value of this type.
         public static final int lbl_valor=0x7f0a00bd;
         public static final int lblacumulado=0x7f0a00a6;
         public static final int lblgrafico=0x7f0a00a8;
-        public static final int lblselecionames=0x7f0a00a3;
+        public static final int lblselecionames=0x7f0a0093;
         public static final int lblsobre=0x7f0a008e;
         public static final int line1=0x7f0a00d2;
         public static final int line3=0x7f0a00d6;
         public static final int listMode=0x7f0a000b;
         public static final int listViewEssenciais=0x7f0a0087;
-        public static final int listViewId=0x7f0a0096;
+        public static final int listViewId=0x7f0a0097;
         public static final int listViewRenda=0x7f0a0085;
         public static final int list_item=0x7f0a0047;
         public static final int logo_only=0x7f0a0038;
@@ -2691,9 +2691,9 @@ containing a value of this type.
         public static final int normal=0x7f0a000c;
         public static final int notificacoes=0x7f0a008b;
         public static final int parentPanel=0x7f0a004a;
-        public static final int pergunta1=0x7f0a009b;
-        public static final int pergunta2=0x7f0a009d;
-        public static final int pergunta3=0x7f0a009f;
+        public static final int pergunta1=0x7f0a009c;
+        public static final int pergunta2=0x7f0a009e;
+        public static final int pergunta3=0x7f0a00a0;
         public static final int pieChart1=0x7f0a00aa;
         public static final int pieChartDespesas=0x7f0a00af;
         public static final int pieChartReceitas=0x7f0a00ad;
@@ -2704,11 +2704,11 @@ containing a value of this type.
         public static final int progress_horizontal=0x7f0a0008;
         public static final int radio=0x7f0a0057;
         public static final int receitas=0x7f0a0088;
-        public static final int receitasId=0x7f0a0094;
+        public static final int receitasId=0x7f0a0095;
         public static final int recitasText=0x7f0a00ac;
-        public static final int resposta1=0x7f0a009c;
-        public static final int resposta2=0x7f0a009e;
-        public static final int resposta3=0x7f0a00a0;
+        public static final int resposta1=0x7f0a009d;
+        public static final int resposta2=0x7f0a009f;
+        public static final int resposta3=0x7f0a00a1;
         public static final int saldoid=0x7f0a00a7;
         public static final int saldoinicial=0x7f0a00eb;
         public static final int sandbox=0x7f0a002c;
@@ -2765,7 +2765,7 @@ containing a value of this type.
         public static final int topPanel=0x7f0a004b;
         public static final int transacoes=0x7f0a00fb;
         public static final int ttitle=0x7f0a00fe;
-        public static final int tv_content=0x7f0a00a1;
+        public static final int tv_content=0x7f0a00a2;
         public static final int txtCategoria=0x7f0a00b0;
         public static final int txtEsqueciMinhaSenha=0x7f0a00e5;
         public static final int txtLoginNewUser=0x7f0a006d;
@@ -2782,7 +2782,7 @@ containing a value of this type.
         public static final int ultimoAcesso=0x7f0a00f8;
         public static final int up=0x7f0a0001;
         public static final int useLogo=0x7f0a0014;
-        public static final int validacaoExisteTransacao=0x7f0a0097;
+        public static final int validacaoExisteTransacao=0x7f0a0098;
         public static final int withText=0x7f0a001e;
         public static final int wrap_content=0x7f0a000a;
     }

@@ -153,7 +153,7 @@ public class Transacoes extends Fragment {
     	 AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 		
     	 if(item.getTitle().toString().contains("Excluir")){
-    		 	Excluir(arrayReceitas.get(info.position).getIdMov());
+    		 	Excluir(arrayReceitas.get(info.position).getIdMov(), arrayReceitas.get(info.position).getvalor(), arrayReceitas.get(info.position).getRecDesp());
            }
     	 else
     		 if(item.getTitle().toString().contains("Detalhes"))
@@ -317,7 +317,7 @@ public class Transacoes extends Fragment {
 		   		      }).setIcon(android.R.drawable.ic_dialog_info).show();
 	}
 
-	private void Excluir(final Long idMov)
+	private void Excluir(final Long idMov, final String sValor, final String sRecDesp)
 	{
 		Popup = PopUp.Popup(viewLista.getContext());
 		  Popup.setTitle("Finançasi9")
@@ -325,7 +325,7 @@ public class Transacoes extends Fragment {
 		     .setMessage("Deseja excluir esta transação?")
 		     .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
 		         public void onClick(DialogInterface dialog, int which) { 
-		        	 bd.ApagarMovimento(idMov);
+		        	 bd.ApagarMovimento(idMov, sValor, sRecDesp);
 		        	 GerarTransacoes(bd, viewLista, listViewTran, ajusteListView, mesCorrent);
 		        	 Toast.makeText(getActivity().getApplicationContext(), "Transação excluída com sucesso",
 	                            Toast.LENGTH_SHORT).show();
@@ -405,7 +405,7 @@ public class Transacoes extends Fragment {
 	       					for(int i = 0; i < arrayReceitas.size(); i++)
 	       	         		{
 	       	         			if(arrayReceitas.get(i).getCheck().booleanValue())
-	       	         				 bd.ApagarMovimento(arrayReceitas.get(i).getIdMov());
+	       	         				 bd.ApagarMovimento(arrayReceitas.get(i).getIdMov(), arrayReceitas.get(i).getvalor(), arrayReceitas.get(i).getRecDesp());
 	       	         		}
 	       			
 	       			pdialog.dismiss();

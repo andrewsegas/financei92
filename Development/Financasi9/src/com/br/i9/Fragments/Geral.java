@@ -103,6 +103,12 @@ public class Geral extends Fragment {
 									
 					}
 				})
+			     .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+			         public void onClick(DialogInterface dialog, int which) { 
+			        	 ((ViewGroup)ViewSaldoInicial.getParent()).removeView(ViewSaldoInicial);
+			        	 dialog.dismiss();
+			         }
+			      })
 				.setIcon(android.R.drawable.ic_dialog_info).show();
 			}
 		});
@@ -114,7 +120,7 @@ public class Geral extends Fragment {
 	
 	private void refreshSaldoAtual(){
 		String sSaldoAtual ;
-		sSaldoAtual = db.SaldoAtual();
+		sSaldoAtual = db.SaldoAtual().replace(",", ".");
 		sSaldoAtual = NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(Double.parseDouble(sSaldoAtual)) ;
 		if(sSaldoAtual.contains("(")){
 			TxtsaldoAtual.setText(Html.fromHtml("<u><font color='red'>Saldo da conta: " + sSaldoAtual.replace("(", "")
@@ -123,7 +129,7 @@ public class Geral extends Fragment {
 			+ " </font></u>" ));
 		}else
 		{
-			TxtsaldoAtual.setText(Html.fromHtml("<u>Saldo da conta:  " + sSaldoAtual.replace("R$", "R$ -")
+			TxtsaldoAtual.setText(Html.fromHtml("<u>Saldo da conta:   " + sSaldoAtual.replace("R$", "R$ ")
 			+ " </u> " ));
 		}
 	}

@@ -10,20 +10,21 @@
 	  android:layout_width="match_parent"
 	  android:layout_height="match_parent">
 	  
-	    <TextView android:text="@string/escolhaMesesDespesas"
-	  			android:textSize="14dip"
-	  			android:id="@+id/escolhaMesesid"
+	     <TextView android:text="Despesas do mês selecionado"
+	  			android:textSize="15sp"
+	  			android:id="@+id/lblselecionames"
 	  			android:layout_width="fill_parent"
-	        	android:layout_height="fill_parent"
-	        	android:gravity="center"
-	  			android:layout_marginBottom="2dp"
-	  			android:layout_marginTop="23dp"
+	  			android:layout_height="wrap_content"
+	  			android:layout_marginBottom="1dp"
+	  			android:layout_marginTop="15dp"
+	  			android:layout_marginLeft="20dp"
 	  			android:textAlignment="gravity"
-	  			android:textColor="@android:color/holo_orange_dark"/>
+	  			android:textColor="@android:color/black"
+	  			/>
 	    
-	      <View	android:id="@+id/secondtDivider"
+	    <View	android:id="@+id/secondtDivider"
 	        	android:layout_height="1dp"
-	        	android:layout_marginTop="15dp"
+	        	android:layout_marginTop="2dp"
 	        	android:layout_width="fill_parent"
 	        	android:layout_marginLeft="28dp"
 	        	android:layout_marginRight="28dp"

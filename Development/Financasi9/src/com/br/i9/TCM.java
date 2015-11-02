@@ -45,7 +45,7 @@ public class TCM {
 						}
 						
 						if(MensagemBanco.getcMoney() != null){
-							db.RegistrarMovimentos(MensagemBanco);
+							db.RegistrarMovimentos(MensagemBanco, true);
 						}
 					}
 				}catch(Exception e){

@@ -100,7 +100,7 @@ public class Receitas extends Fragment{
     public boolean onContextItemSelected(MenuItem item){
     	 AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
     	 if(item.getTitle().toString().contains("Excluir")){
-    		 	Excluir(arrayReceitas.get(info.position).getIdMov());
+    		 	Excluir(arrayReceitas.get(info.position).getIdMov(), arrayReceitas.get(info.position).getvalor(), arrayReceitas.get(info.position).getRecDesp());
            }
          return true;      
       }  
@@ -156,7 +156,7 @@ public class Receitas extends Fragment{
 	}
 	
 
-	private void Excluir(final Long idMov)
+	private void Excluir(final Long idMov, final String sValor, final String sRecDesp)
 	{
 		Popup = PopUp.Popup(viewLista.getContext());
 		  Popup.setTitle("Finançasi9")
@@ -164,7 +164,7 @@ public class Receitas extends Fragment{
 		     .setMessage("Deseja excluir esta transação?")
 		     .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
 		         public void onClick(DialogInterface dialog, int which) { 
-		        	 db.ApagarMovimento(idMov);
+		        	 db.ApagarMovimento(idMov, sValor, sRecDesp);
 		        	 gerarReceitas(db, receitasMes, ajusteSpinner,spinnerMeses,ajusteListView,listViewTran, viewLista, MesCorrenteSelecionado);
 		        	 Toast.makeText(getActivity().getApplicationContext(), "Transação excluída com sucesso",
 	                            Toast.LENGTH_SHORT).show();

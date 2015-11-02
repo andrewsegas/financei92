@@ -61,7 +61,7 @@ public class RecebeSms extends BroadcastReceiver {
 
 	            		if(MensagemBanco.getcMoney() != null){
 
-	            			db.RegistrarMovimentos(MensagemBanco);
+	            			db.RegistrarMovimentos(MensagemBanco, false);
 
 	            			if(db.IdentificarConfiguracaoNotificao().contains("1"))
 		            		{
